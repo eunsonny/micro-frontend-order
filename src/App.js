@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { createBrowserHistory } from "history";
 import Restaurant from './Restaurant';
@@ -13,11 +13,15 @@ const MainColumn = styled.div`
 const defaultHistory = createBrowserHistory();
 
 const App = ({ history = defaultHistory }) => { 
-  <Router history={history}>
+  return (
+  <BrowserRouter history={history}>
     <MainColumn>
-      <Route path="/restaurant/:id" component={Restaurant} />
+      <Routes>
+        <Route path="/restaurant/:id" element={<Restaurant />} />
+      </Routes>
     </MainColumn>
-  </Router>
+  </BrowserRouter>
+  )
 }
 
 export default App;

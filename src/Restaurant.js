@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import RestaurantDetails from './RestaurantDetails';
 
 const Restaurant = (props) => {
+  const params = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
     const host = process.env.REACT_APP_CONTENT_HOST;
-    const id = props.match.params.id;
+    const id = params.id;
 
     fetch(`${host}/restaurants/${id}.json`)
       .then(result => result.json())
@@ -23,7 +25,7 @@ const Restaurant = (props) => {
         setLoading(false)
         setError(true)
       })
-  })
+  }, [])
 
   if (loading) {
     return 'Loading';
