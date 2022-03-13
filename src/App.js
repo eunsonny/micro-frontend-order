@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Router, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import { createBrowserHistory } from "history";
+import Restaurant from './Restaurant';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const MainColumn = styled.div`
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 20px;
+`;
+
+const defaultHistory = createBrowserHistory();
+
+const App = ({ history = defaultHistory }) => { 
+  <Router history={history}>
+    <MainColumn>
+      <Route path="/restaurant/:id" component={Restaurant} />
+    </MainColumn>
+  </Router>
 }
 
 export default App;
