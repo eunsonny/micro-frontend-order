@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 
-window.renderRestaurant = (containerId, history) => {
-  ReactDOM.render(<App history={history} />, document.getElementById(containerId));
+window.renderRestaurant = (containerId, navigate) => {
+  ReactDOM.render(<App navigate={navigate} />, document.getElementById(containerId));
   unregister();
 }
 

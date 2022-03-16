@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { createBrowserHistory } from "history";
 import Restaurant from './Restaurant';
 
 const MainColumn = styled.div`
@@ -10,11 +9,9 @@ const MainColumn = styled.div`
   padding: 20px;
 `;
 
-const defaultHistory = createBrowserHistory();
-
-const App = ({ history = defaultHistory }) => { 
+const App = ({ navigate }) => { 
   return (
-  <BrowserRouter history={history}>
+  <BrowserRouter navigate={navigate}>
     <MainColumn>
       <Routes>
         <Route path="/restaurant/:id" element={<Restaurant />} />
